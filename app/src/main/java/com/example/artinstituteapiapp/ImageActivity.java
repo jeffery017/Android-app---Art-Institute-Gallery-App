@@ -13,7 +13,6 @@ import com.bumptech.glide.Glide;
 import com.example.artinstituteapiapp.databinding.ActivityImageBinding;
 
 public class ImageActivity extends AppCompatActivity {
-    private static final String TAG = "ImageActivity";
     private ActivityImageBinding binding;
 
     @Override

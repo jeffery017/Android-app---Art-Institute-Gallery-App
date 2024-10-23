@@ -2,7 +2,6 @@ package com.example.artinstituteapiapp;
 
 import android.net.Uri;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -14,7 +13,6 @@ import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 
 public class ArtworkDownloader {
     private static final String TAG = "ArtworkDownloader";
