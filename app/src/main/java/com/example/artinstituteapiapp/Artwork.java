@@ -1,12 +1,6 @@
 package com.example.artinstituteapiapp;
-
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import androidx.annotation.NonNull;
-
 import com.google.gson.Gson;
-
 import java.io.Serializable;
 
 public class Artwork  implements Serializable {

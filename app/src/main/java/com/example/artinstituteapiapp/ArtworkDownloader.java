@@ -13,14 +13,15 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 
 public class ArtworkDownloader {
     private static final String TAG = "ArtworkDownloader";
     private static RequestQueue queue;
     private static MainActivity mainActivity;
-    private static ArrayList<Artwork> artworks = new ArrayList<>();
-    private static ArrayList<Integer> galleryIds = new ArrayList<>();
+    private static final ArrayList<Artwork> artworks = new ArrayList<>();
+    private static final ArrayList<Integer> galleryIds = new ArrayList<>();
 
     public static void downloadRandomArtwork(MainActivity mainActivityIn) {
         Log.d(TAG, "downloadRandomArtwork: ");
@@ -56,9 +57,7 @@ public class ArtworkDownloader {
                     downloadRandomArtwork(mainActivity);
                 }
             },
-            (err) -> {
-                Log.d(TAG, "getArtworkIdByPage: request fail");
-            }
+            (err) -> Log.d(TAG, "getArtworkIdByPage: request fail")
         );
         queue.add(jsonObjectRequest);
     }
@@ -99,9 +98,7 @@ public class ArtworkDownloader {
                 }
 
             },
-            (err) -> {
-                Log.d(TAG, "downloadArtworks: request fail");
-            }
+            (err) -> Log.d(TAG, "downloadArtworks: request fail")
         );
         queue.add(jsonObjectRequest);
     }
@@ -125,9 +122,7 @@ public class ArtworkDownloader {
                 ArrayList<Artwork> artworks = parseJSON(res.toString());
                 updateArtworks(artworks);
             },
-            err -> {
-                Log.d(TAG, "downloadArtworks: request fail");
-            }
+            err -> Log.d(TAG, "downloadArtworks: request fail")
         );
         queue.add(jsonObjectRequest);
     }
@@ -151,7 +146,6 @@ public class ArtworkDownloader {
 
     private static ArrayList<Integer> parseJsonIds(String jsonString) {
         ArrayList<Integer> ids = new ArrayList<>();
-        Gson gson = new Gson();
         try {
             JSONArray jsonArray = new JSONObject(jsonString).getJSONArray("data");
             for (int i = 0; i < jsonArray.length(); i++) {
@@ -165,7 +159,7 @@ public class ArtworkDownloader {
     }
 
     private static void updateArtworks(ArrayList<Artwork> artworks) {
-        artworks.sort((o1, o2) -> o1.getTitle().compareTo(o2.getTitle()));
+        artworks.sort(Comparator.comparing(Artwork::getTitle));
         mainActivity.updateArtworks(artworks);
     }
 }

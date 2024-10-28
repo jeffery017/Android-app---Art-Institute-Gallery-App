@@ -1,7 +1,6 @@
 package com.example.artinstituteapiapp;
 
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.util.Linkify;
 import android.view.View;
@@ -29,7 +28,6 @@ public class CopyrightActivity extends AppCompatActivity {
             return insets;
         });
 
-        //binding.copyrightApiUrlText.setPaintFlags(binding.copyrightApiUrlText.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         Linkify.addLinks(binding.copyrightApiUrlText, Linkify.WEB_URLS);
         Linkify.addLinks(binding.copyrightFontUrlText, Linkify.WEB_URLS);
 

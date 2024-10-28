@@ -1,5 +1,6 @@
 package com.example.artinstituteapiapp;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.example.artinstituteapiapp.databinding.ActivityImageBinding;
 public class ImageActivity extends AppCompatActivity {
     private ActivityImageBinding binding;
 
+    @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,9 +39,7 @@ public class ImageActivity extends AppCompatActivity {
             binding.imageViewImage.setScaleLevels(1.0f, 3.0f, 13f);
         }
 
-        binding.imageViewImage.setOnScaleChangeListener((photoView, scale, isByUser) -> {
-            binding.imageViewScaleRateText.setText(String.format("Scale: %.0f%%", binding.imageViewImage.getScale() * 100));
-        });
+        binding.imageViewImage.setOnScaleChangeListener((photoView, scale, isByUser) -> binding.imageViewScaleRateText.setText(String.format("Scale: %.0f%%", binding.imageViewImage.getScale() * 100)));
     }
 
     public void returnToMain(View view) {

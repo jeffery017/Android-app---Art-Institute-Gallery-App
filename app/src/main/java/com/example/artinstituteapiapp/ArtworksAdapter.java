@@ -41,7 +41,7 @@ public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.Artwor
         Artwork artwork = artworks.get(position);
         holder.title.setText(artwork.getTitle());
         if (artwork.getImage_id() != null) {
-            Glide.with(mainActivity).load(artwork.getFullImageUrl()).into(holder.image);
+            Glide.with(mainActivity).load(artwork.getThumbnailUrl()).into(holder.image);
         }
         else {
             holder.image.setImageResource(R.drawable.not_available);

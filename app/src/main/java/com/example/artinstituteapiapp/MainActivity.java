@@ -155,9 +155,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         builder.setIcon(R.drawable.logo);
         builder.setTitle("NoConnectionError");
         builder.setMessage("No network connection present - cannot contact Art Institute API server.");
-        builder.setPositiveButton("OK", (dialog, which) -> {
-            dialog.dismiss();
-        });
+        builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
         builder.setCancelable(false);
         builder.show();
      }
@@ -177,8 +175,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
-        Gson gson = new Gson();
-
         outState.putString("artworks", artworks.toString());
         super.onSaveInstanceState(outState);
     }
