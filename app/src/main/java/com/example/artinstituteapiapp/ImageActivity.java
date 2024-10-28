@@ -2,6 +2,7 @@ package com.example.artinstituteapiapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +34,17 @@ public class ImageActivity extends AppCompatActivity {
             binding.imageViewArtistText.setText(artwork.getArtist_display());
 
             Glide.with(this).load(artwork.getFullImageUrl()).into(binding.imageViewImage);
+            binding.imageViewImage.setScaleLevels(1.0f, 3.0f, 13f);
         }
+
+        binding.imageViewImage.setOnScaleChangeListener((photoView, scale, isByUser) -> {
+            binding.imageViewScaleRateText.setText(String.format("Scale: %.0f%%", binding.imageViewImage.getScale() * 100));
+        });
+    }
+
+    public void returnToMain(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
     }
 }

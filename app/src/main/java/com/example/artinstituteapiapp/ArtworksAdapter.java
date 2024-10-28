@@ -40,7 +40,12 @@ public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.Artwor
         Log.d(TAG, "onBindViewHolder: called");
         Artwork artwork = artworks.get(position);
         holder.title.setText(artwork.getTitle());
-        Glide.with(mainActivity).load(artwork.getThumbnailUrl()).into(holder.image);
+        if (artwork.getImage_id() != null) {
+            Glide.with(mainActivity).load(artwork.getFullImageUrl()).into(holder.image);
+        }
+        else {
+            holder.image.setImageResource(R.drawable.not_available);
+        }
     }
 
     @Override

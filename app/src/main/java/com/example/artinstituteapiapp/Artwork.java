@@ -1,8 +1,15 @@
 package com.example.artinstituteapiapp;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+import com.google.gson.Gson;
+
 import java.io.Serializable;
 
-public class Artwork implements Serializable {
+public class Artwork  implements Serializable {
     private final String title;
     private final String credit_line;
     private final String medium_display;
@@ -12,10 +19,11 @@ public class Artwork implements Serializable {
     private final String date_display;
     private final String image_id;
     private final String gallery_title;
+    private final String gallery_id;
     private final String place_of_origin;
     private final String dimensions;
 
-    Artwork(String title, String credit_line, String medium_display, String department_title, String artist_display, String api_link, String date_display, String image_id, String gallery_title, String place_of_origin, String dimensions) {
+    Artwork(String title, String credit_line, String medium_display, String department_title, String artist_display, String api_link, String date_display, String image_id, String gallery_title, String galleryId, String place_of_origin, String dimensions) {
         this.title = title;
         this.credit_line = credit_line;
         this.medium_display = medium_display;
@@ -25,6 +33,7 @@ public class Artwork implements Serializable {
         this.date_display = date_display;
         this.image_id = image_id;
         this.gallery_title = gallery_title;
+        gallery_id = galleryId;
         this.place_of_origin = place_of_origin;
         this.dimensions = dimensions;
     }
@@ -36,9 +45,7 @@ public class Artwork implements Serializable {
     public String getDate_display() {
         return date_display;
     }
-    public String getImage_id() {
-        return image_id;
-    }
+    public String getImage_id() {return image_id;}
     public String getArtist_display() {
         return artist_display;
     }
@@ -64,10 +71,20 @@ public class Artwork implements Serializable {
         return api_link;
     }
 
+    public String getGalleryId() {
+        return gallery_id;
+    }
+
     public String getThumbnailUrl() {
         return "https://www.artic.edu/iiif/2/" + image_id + "/full/200,/0/default.jpg";
     }
     public String getFullImageUrl() {
         return "https://www.artic.edu/iiif/2/" + image_id + "/full/843,/0/default.jpg";
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
     }
 }

@@ -10,10 +10,11 @@
 
     <ImageView
         android:id="@+id/imageview_logo"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="returnToMain"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
@@ -67,12 +68,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="8dp"
-        android:layout_marginVertical="16dp"
+        android:layout_marginVertical="8dp"
         app:layout_constraintBottom_toTopOf="@+id/imageViewScaleRateText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewArtistText"
-        app:layout_constraintVertical_bias="0.499"
         tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
